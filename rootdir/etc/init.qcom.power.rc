@@ -80,8 +80,12 @@ on enable-low-power
     write /proc/sys/kernel/sched_prefer_sync_wakee_to_waker 1
 
     # Enable Adaptive LMK
-    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
+    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 0
     write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
+
+    # Set swappiness and cache pressure
+    write /proc/sys/vm/swappiness 5
+    write /proc/sys/vm/vfs_cache_pressure 10
 
     write /sys/devices/system/cpu/cpu0/online 1
 
@@ -102,7 +106,7 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/fast_ramp_down 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/align_windows 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 78000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration 80000
@@ -152,9 +156,9 @@ on enable-low-power
     write /sys/kernel/cpu_input_boost/enabled 0
 
 # Set big.LITTLE scheduler parameters
-    write /proc/sys/kernel/sched_boost 0
-    write /proc/sys/kernel/sched_upmigrate 70
-    write /proc/sys/kernel/sched_downmigrate 65
+    write /proc/sys/kernel/sched_boost 1
+    write /proc/sys/kernel/sched_upmigrate 90
+    write /proc/sys/kernel/sched_downmigrate 85
     write /proc/sys/kernel/sched_freq_inc_notify 400000
     write /proc/sys/kernel/sched_freq_dec_notify 400000
     write /proc/sys/kernel/sched_spill_nr_run 3
@@ -202,12 +206,15 @@ on enable-low-power
     write /dev/cpuset/system-background/cpus 0-2
     
 
-    write /sys/block/dm-0/queue/read_ahead_kb 128
-    write /sys/block/sda/queue/read_ahead_kb 128
-    write /sys/block/sde/queue/read_ahead_kb 128
-    write /sys/block/dm-0/queue/scheduler bfq
-    write /sys/block/sda/queue/scheduler bfq
-    write /sys/block/sde/queue/scheduler bfq
+    write /sys/block/dm-0/queue/read_ahead_kb 512
+    write /sys/block/sda/queue/read_ahead_kb 512
+    write /sys/block/sde/queue/read_ahead_kb 512
+    write /sys/block/dm-0/queue/scheduler maple
+    write /sys/block/sda/queue/scheduler maple
+    write /sys/block/sde/queue/scheduler maple
+
+    #Enable scsi block multiqueue
+    write /sys/module/scsi_mod/parameters/use_blk_mq Y
 
     write /sys/module/msm_thermal/core_control/enabled 1
 
@@ -221,7 +228,7 @@ on property:sys.boot_completed=1
     trigger enable-low-power
 
     # Set I/O squeduler
-    setprop sys.io.scheduler "bfq"
+    setprop sys.io.scheduler "maple"
 
     # Start I/O prefetcher service
     start iop

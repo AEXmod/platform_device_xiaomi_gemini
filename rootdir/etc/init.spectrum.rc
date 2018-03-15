@@ -31,7 +31,7 @@ on property:persist.spectrum.profile=0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/fast_ramp_down 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/align_windows 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 78000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration 80000
@@ -64,16 +64,16 @@ on property:persist.spectrum.profile=0
     write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 133000000
     write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
-    write /sys/block/dm-0/queue/read_ahead_kb 128
-    write /sys/block/sda/queue/read_ahead_kb 128
-    write /sys/block/sde/queue/read_ahead_kb 128
-    write /sys/block/dm-0/queue/scheduler bfq
-    write /sys/block/sda/queue/scheduler bfq
-    write /sys/block/sde/queue/scheduler bfq
+    write /sys/block/dm-0/queue/read_ahead_kb 512
+    write /sys/block/sda/queue/read_ahead_kb 512
+    write /sys/block/sde/queue/read_ahead_kb 512
+    write /sys/block/dm-0/queue/scheduler maple
+    write /sys/block/sda/queue/scheduler maple
+    write /sys/block/sde/queue/scheduler maple
     write /sys/block/sda/queue/iostats 0
     write /sys/block/sde/queue/iostats 0
     write /sys/module/workqueue/parameters/power_efficient Y
-    write /proc/sys/kernel/sched_boost 0
+    write /proc/sys/kernel/sched_boost 1
 
 
 # Performance 
