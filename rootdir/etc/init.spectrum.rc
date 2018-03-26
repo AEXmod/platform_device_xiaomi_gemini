@@ -26,7 +26,7 @@ on property:persist.spectrum.profile=0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack 20000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "80 307200:20 307200:25 480000:30 556800:35 556800:40 729600:45 844800:50 844800:55 1036800:60 1036800:65 1036800:70 1228800:75 1228800:80 1228800:85 1478400:90 1478400:95 1478400:100"
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 18000
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/fast_ramp_down 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/align_windows 0
@@ -49,14 +49,14 @@ on property:persist.spectrum.profile=0
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_slack 3333
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "85 307200:20 307200:25 480000:30 806400:35 940800:40 1190400:45 1248000:50 1248000:55 1478400:60 1555200:65 1555200:70 1785600:75 1824000:80 1996800:85 2073600:90 2073600:95 2073600:100"
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 18000
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/ignore_hispeed_on_notif 1
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/ignore_hispeed_on_notif 0
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/boost 0
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/fast_ramp_down 1
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/align_windows 0
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/use_migration_notif 1
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/enable_prediction 0
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/use_sched_load 1
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/max_freq_hysteresis 100000
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/max_freq_hysteresis 39000
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/boostpulse_duration 80000
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/is_locked 1
 
