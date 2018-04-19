@@ -89,7 +89,7 @@ PRODUCT_PACKAGES += \
 
 # Power HIDL
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.0-service-qti
+    android.hardware.power@1.0-service.gemini
 
 # RenderScript HIDL
 PRODUCT_PACKAGES += \
