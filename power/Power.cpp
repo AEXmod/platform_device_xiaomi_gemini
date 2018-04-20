@@ -52,10 +52,10 @@ Return<void> Power::setInteractive(bool interactive)  {
 }
 
 Return<void> Power::powerHint(PowerHint hint, int32_t data) {
-    if (android::base::GetProperty("init.svc.perfd", "") != "running") {
-        ALOGW("perfd is not started");
-        return Void();
-    }
+//    if (android::base::GetProperty("init.svc.perfd", "") != "running") {
+//        ALOGW("perfd is not started");
+//        return Void();
+//    }
     power_hint(static_cast<power_hint_t>(hint), data ? (&data) : NULL);
     return Void();
 }
