@@ -112,9 +112,9 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 15000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost 0
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/fast_ramp_down 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/fast_ramp_down 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/align_windows 0
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 0
@@ -140,7 +140,7 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/boost 0
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/fast_ramp_down 0
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/align_windows 0
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/use_migration_notif 
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/use_migration_notif 1
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/enable_prediction 0
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/use_sched_load 1
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/max_freq_hysteresis 0
@@ -223,7 +223,7 @@ on enable-low-power
     write /proc/sys/kernel/sched_upmigrate_min_nice 9
 
     # Set perfd properties
-    setprop sys.post_boot.parsed 1
+    #setprop sys.post_boot.parsed 1
 
 on property:sys.boot_completed=1
     trigger enable-low-power
